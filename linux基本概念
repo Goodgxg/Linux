@@ -56,6 +56,9 @@ Linux
     10 halt 立即关机
     11 Ctrl+c 退出进程
     12 ctrl+z 挂起进程
+    
+    jobs显示所有进程id
+    ps -aux显示所有的进程信息
     13 bg jobid 将制定的进程后台运行
     14 fg jobid 将制定进程前台
     15 echo 将指定的信息输出
