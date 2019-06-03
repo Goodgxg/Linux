@@ -1,0 +1,132 @@
+Linux
+1.安装
+2.Linux不进入系统更改用户密码
+    1.在grub界面按e键,进入编辑模式
+    2,选择第二个选项,编辑kernal这个行按e键
+    3.输入" 1"(空格1),然后enter
+    4.按b重启
+    5.passwd 用户名
+    6.输入新的密码
+    7.重启电脑(init 6/reboot)
+ 3.Linux系统目录结构
+    1.bin/sbin 二进制文件,包括root和普通用户执行的所有Linux的命令或者二进制文件.包含shell解析器
+    2.boot:系统启动,引导和内核目录.存放引导文件,一般系统启动的相关信息,命令,程序都在这个目录下.boot目录下的grup目录,
+    配置grup.conf文件的timeout属性=0,Linux以后启动就不需要等待.
+    3.dev 设备文件
+    4.etc 系统级别的配置文件所在的目录.例如:网卡,hosts,profile.这个目录一般是有系统管理员来使用的
+    5.home:普通用户的家目录.root用户的目录是单独存放的
+    6.lib/lib64:存放系统使用的函数库目录.由于Linux是有C语言开发的,所有里面存了很多头文件内容.
+    7.lost+fount:在文件系统ext2,ext3下,系统崩溃的消息记录到该目录下
+    8.mnt 主要用来挂在外部设备的目录,系统管理员临时安装系统的一个安装点
+    9.opt 给主机额外安装软件的目录.
+    10.proc 重要的需要存放到内存中的数据.
+    11.root用户的家目录
+    12.usr 一般把各个用户公用的软件安装到这个目录下.
+    13 sbin 该目录存放的只供root用户使用的一些命令
+    14.tmp 临时目录,用来存放临时文件
+    15 var 用于存放程序运行时需要改变的数据
+   4Linux帮助命令
+      man command
+      info command
+      command --help
+      command -help
+      注:
+        tab键:用在第一个参数为命令补全,用在第二个以后为文件补全,相同文件的前缀文件,双击tab键显示所有相同前缀的文件或命令
+   5.Linux基本命令
+    1.uname 查看当前系统信息
+        -a 显示版本系统所有信息   -r显示内核版本    -n 显示主机名
+      cat /proc/version     Linux查看当前操作系统的版本信息 
+      cat /etc/issue        同上
+      cat /etc/redhat-release 同上
+      
+    2 wc 统计文本的行数,字数,字符数(Word count)
+      -mwl 字符/单词/行数
+    3 ln:建立链接文件(link)
+      ln -s 软连接 源文件没了会影响链接文件
+      ln 硬链接 源文件没了,自己不会受太大影响
+    4.pwd 打印当前工作目录
+    5.date 日期
+      date +%Y-%M-%D HH-mm-ss
+      date -s '' 设置时间,服务重启,时间失效
+      hwclock -w 将当前date设置的时间写入BIOS,系统重启后也会安照设置的时间允许
+    6.who 查看谁在线
+    7.whoami 当前用户
+    8 last最近几条登录信息
+    9 shutdown 关机 -h
+    10 halt 立即关机
+    11 Ctrl+c 退出进程
+    12 ctrl+z 挂起进程
+    13 bg jobid 将制定的进程后台运行
+    14 fg jobid 将制定进程前台
+    15 echo 将指定的信息输出
+  Linux 网络设置
+  1.使用setup
+    输入enter后,出现一个系统的帮助工具
+    修改IP地址
+    重启网卡 service network start
+  2配置 vi /etc/sysconfig/network-scripts/ifconfig-etho
+    配置信息如下:
+      vi   /etc/sysconfig/network-scripts/ifcfg-eth0 修改配置文件
+      onboot=yes//开机启动网络服务
+      bootproto=static//网络地址分配规则
+      DHCP:自动分配网络地址 
+      static:使用静态IP
+      IPADDR=192.168.9.2//IP地址
+      NETMASK=255.255.255.0//子网掩码
+      GATEWAY=192.168.230.2//网关
+      DNS=114.114.114.114//域名解析器
+   配置完成后重启网卡生效
+  文件目录操作基本命令
+    ls -R递归显示所有文件
+ 3.别名设置
+  alias 给一个命令起别名
+       alias cl='clear'
+       unalias cl 取消别名
+       以上设置别名重启服务器后不生效
+       永久生效配置 /etc/bashrc文件 加上 cl='clear' 重新加载文件使其生效:source /etc/bashrc
+   cd ~: 切换到当前用户的家目
+        cd #: 切换到当前用户的家目录
+        cd: 切换到当前用户的家目录
+        cd ..:	返回上一级目录
+        cd -: 切换到上一次的目录下
+   mkdir: 创建目录
+        mkdir aaa	# 使用相对路径创建文件夹
+        mkdir /data	# 使用绝对路径创建文件夹
+        mkdir -p /aaa/bbb/ccc/ddd	# 级联创建目录
+   rmdir: 删除目录
+        rmdir /aaa/bbb/ccc	# 只能删除空的目录
+        rm -r /aaa/bbb/ccc	# 递归删除目录，有人机交互界面
+        rm -f /aaa/bbb/ccc	# 强制删除目录，没有任何提示
+   mv: 移动目录、文件
+        mv source target	# 将source文件移动到target
+        mv aa/ bb/
+   rename: 批量重命名文件
+        rename .log .log.bak *
+   touch: 创建新的文件
+        touch a.txt	# 创建一个空文件
+  >和>>重定向
+      > 覆盖文本
+      >> 追加在文本后面
+
+      
+      
+      
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+      
