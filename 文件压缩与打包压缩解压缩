@@ -1,0 +1,32 @@
+压缩和解压缩:
+gzip -> .gz 压缩:将一个文件压缩
+gunzip file 解压缩:将一个文件解压缩
+gzip -d file 将文件解压缩
+zcat file.gz 可查看压缩内容
+
+bzip  -> .bz2
+bzip2 file 将一个文件压缩
+bunzip2 file 将一个文件解压缩
+bzip2 -d file 将一个文件解压缩
+bcat file.bz2 可查看压缩内容
+
+打包,解包
+将若干个指定的文件或文件夹打包成一个文件
+tar
+-f :必须参数,且必须在最后位,需要使用档案的名字
+-v:通用参数,是否显示打包或解包的过程
+打包:
+-c :创建一个新的打包文档
+-r: 向一个已经存在的打包文档中追加文件
+
+解包: 
+-x:解包
+-C:指定路径
+tar 	-xf	 temp/t.tar	 -C	 target/
+打包并压缩,解压并解压缩:
+-z : 打包并压缩,解压缩并解包 .gz
+-j:打包并压缩,解压缩并解包 .bz2
+tar -zcvf file.gz file1 file2 file3 file4   或者 tar -zcvf file.gz directory/ 打包压缩
+tar -zxvf file.gz 解压并解压缩
+tar -zxvf file.gz -C targetDirectory 解压到指定目录
+tar -ztvf file.gz 查看包内内容.
