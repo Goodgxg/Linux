@@ -28,8 +28,8 @@ set unnu 不显示行号
 cat 一次性将内容全部打印出来
 tac 倒着打印
 
-more 分页查看
-less 分页查看
+more 分页查看 空格键向下反页,b向前翻页q退出
+less 分页查看 空格键向下反页,b向前翻页q退出 可以进行文件检索./word 查询文本中的word字符
 
 head 查看头几行
 tail 查看尾行
